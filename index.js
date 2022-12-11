@@ -21,30 +21,13 @@ function start(client) {
     // client.sendMessage(message.from, media, { caption: `${data_tour}` });
     // client.sendMessage(message.from, `${data_iqbal}`)
     
-    if (message.isGroupMsg === true) {
-      client
-        .sendText(message.from, `${data_iqbal}`)
-        .then((result) => {
-          console.log('Result: ', result); //return object success
-        })
-        .catch((erro) => {
-          console.error('Error when sending: ', erro); //return object error
-        });
-      
-      client
-        .sendImage(
-          message.from,
-          'text/tour.png',
-          'Hanania Tour and Travel',
-          `${data_tour}`
-        )
-        .then((result) => {
-          console.log('Result: ', result); //return object success
-        })
-        .catch((erro) => {
-          console.error('Error when sending: ', erro); //return object error
-        });
-    } else if (message.isGroupMsg === false && message.body === "!button") {
+    if (message.isGroupMsg === false && message.body === "!button") {
+      let buttons = [
+        {
+          url: 'https://orkestral.io/',
+          text: 'Orkestral Cloud'
+        },
+      ]
       client.sendButtons(message.from, 'Title', buttons, 'Description')
         .then((result) => {
             console.log('Result: ', result); //return object success
